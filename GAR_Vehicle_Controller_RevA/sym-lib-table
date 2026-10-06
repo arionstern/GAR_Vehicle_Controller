@@ -1,0 +1,4 @@
+(sym_lib_table
+	(version 7)
+	(lib (name "GAR")(type "KiCad")(uri "${KIPRJMOD}/libraries/symbols/GAR.kicad_sym")(options "")(descr "GAR project symbols"))
+)

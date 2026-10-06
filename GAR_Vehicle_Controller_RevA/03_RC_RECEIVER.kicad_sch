@@ -1,0 +1,13 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "a6b707eb-74ae-456d-9bc9-29ac6a6ab048")
+	(paper "A4")
+	(title_block
+		(title "RC Receiver (SBUS/CRSF)")
+		(rev "A")
+		(company "Gator Autonomous Racing")
+	)
+	(lib_symbols)
+)

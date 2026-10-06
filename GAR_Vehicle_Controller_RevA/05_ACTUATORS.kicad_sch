@@ -1,0 +1,13 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "b0f39b6e-3c7f-4d72-a320-b8a0cb36e883")
+	(paper "A4")
+	(title_block
+		(title "Actuators (ESC + Servo)")
+		(rev "A")
+		(company "Gator Autonomous Racing")
+	)
+	(lib_symbols)
+)

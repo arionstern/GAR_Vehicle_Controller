@@ -1,0 +1,13 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "41b7287a-9218-4b6a-9bbf-7d962f36d8d4")
+	(paper "A4")
+	(title_block
+		(title "Telemetry (ESP32)")
+		(rev "A")
+		(company "Gator Autonomous Racing")
+	)
+	(lib_symbols)
+)

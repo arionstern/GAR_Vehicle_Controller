@@ -1,0 +1,13 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "b1bb3b16-6dfa-4c37-8d19-0d8154ad0e1e")
+	(paper "A4")
+	(title_block
+		(title "Sensors and Expansion")
+		(rev "A")
+		(company "Gator Autonomous Racing")
+	)
+	(lib_symbols)
+)

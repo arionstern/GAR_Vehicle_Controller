@@ -1,0 +1,13 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "7e5a6b74-075f-445e-906f-4cf3b7700355")
+	(paper "A4")
+	(title_block
+		(title "Power")
+		(rev "A")
+		(company "Gator Autonomous Racing")
+	)
+	(lib_symbols)
+)

@@ -1,0 +1,294 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "74bea9bf-ac2a-4b5e-b384-1dd035b3080d")
+	(paper "A4")
+	(title_block
+		(title "GAR Vehicle Controller - 00_TOP")
+		(rev "A")
+		(company "Gator Autonomous Racing")
+	)
+	(lib_symbols)
+	(sheet
+		(at 190 110)
+		(size 60 35)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "114ed77a-77c3-457c-87f8-7e1048c0546c")
+		(property "Sheetname" "06_SENSORS_EXPANSION"
+			(at 190 109.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "06_SENSORS_EXPANSION.kicad_sch"
+			(at 190 145.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "GAR_Vehicle_Controller_RevA"
+				(path "/74bea9bf-ac2a-4b5e-b384-1dd035b3080d"
+					(page "7")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 30 110)
+		(size 60 35)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "51302dc8-8b79-428c-83eb-3e7e724d2825")
+		(property "Sheetname" "04_TELEMETRY"
+			(at 30 109.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "04_TELEMETRY.kicad_sch"
+			(at 30 145.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "GAR_Vehicle_Controller_RevA"
+				(path "/74bea9bf-ac2a-4b5e-b384-1dd035b3080d"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 30 40)
+		(size 60 35)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "8e2197c9-8969-44e0-ba33-0b582de18bb3")
+		(property "Sheetname" "01_POWER"
+			(at 30 39.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "01_POWER.kicad_sch"
+			(at 30 75.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "GAR_Vehicle_Controller_RevA"
+				(path "/74bea9bf-ac2a-4b5e-b384-1dd035b3080d"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 190 40)
+		(size 60 35)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "ac67c354-ab94-4ccc-91df-7cd0ea060280")
+		(property "Sheetname" "03_RC_RECEIVER"
+			(at 190 39.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "03_RC_RECEIVER.kicad_sch"
+			(at 190 75.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "GAR_Vehicle_Controller_RevA"
+				(path "/74bea9bf-ac2a-4b5e-b384-1dd035b3080d"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 110 40)
+		(size 60 35)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "ad3b1b42-7e7e-4e49-8633-cee162c5ef6f")
+		(property "Sheetname" "02_STM32_NUCLEO"
+			(at 110 39.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "02_STM32_NUCLEO.kicad_sch"
+			(at 110 75.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "GAR_Vehicle_Controller_RevA"
+				(path "/74bea9bf-ac2a-4b5e-b384-1dd035b3080d"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 110 110)
+		(size 60 35)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "f7893303-2d1b-41eb-959e-4912e9ad1e3e")
+		(property "Sheetname" "05_ACTUATORS"
+			(at 110 109.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "05_ACTUATORS.kicad_sch"
+			(at 110 145.6 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "GAR_Vehicle_Controller_RevA"
+				(path "/74bea9bf-ac2a-4b5e-b384-1dd035b3080d"
+					(page "6")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+)
