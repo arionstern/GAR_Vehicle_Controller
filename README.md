@@ -69,8 +69,8 @@ Notes:
   jumper rather than waiting.
 - Other teams sharing the STM32 (for example BMS) reserve their pins in
   `docs/pinmap.md`, not in a separate file.
-- Settle the battery and servo-supply decisions (Task B) early; the actuator
-  sheet (Task E) depends on them.
+- Agree the power interface with the BMS team (Task B) early; the actuator
+  sheet (Task E) depends on who supplies the servo.
 - The Nucleo footprint (Task F) and PCB-ordering research (Task H) have no
   dependencies and can be done at any time.
 
@@ -83,7 +83,7 @@ request for review before merging. Tick items off as they land on `main`.
 | Task | Owner | Branch | Deliverable |
 |---|---|---|---|
 | A — System architecture / pin map | _unassigned_ | `architecture` | `docs/architecture.md`, `docs/signals.md`, `docs/pinmap.md` |
-| B — Power architecture | _unassigned_ | `power` | `01_POWER` sheet, `docs/power_budget.md` |
+| B — Power input | _unassigned_ | `power` | `01_POWER` sheet, `docs/power_budget.md` |
 | C — RC receiver (SBUS/CRSF) | _unassigned_ | `rc-interface` | `03_RC_RECEIVER` sheet, receiver section of `docs/interface_notes.md` |
 | D — Telemetry / ESP32 | _unassigned_ | `telemetry` | `04_TELEMETRY` sheet, telemetry section of `docs/interface_notes.md` |
 | E — Actuator interfaces | _unassigned_ | `actuators` | `05_ACTUATORS` sheet |
@@ -105,13 +105,18 @@ Later (before schematic review):
 - [ ] Fill in `docs/pinmap.md` with pin, alternate function, and Nucleo header pin for each
 - [ ] Draw the 00_TOP block diagram and hierarchical connections
 
-### B — Power architecture
-- [ ] Fill in the load table in `docs/power_budget.md` from datasheets
-- [ ] Choose the battery (chemistry, cell count, connector)
-- [ ] Decide servo supply: XR14 BEC, standalone BEC, or on-board regulator
-- [ ] Decide how the Nucleo is powered and whether +5V_ACT / +5V_LOGIC are separate
-- [ ] Choose polarity protection, fusing, bulk capacitance
-- [ ] Draw `01_POWER` with a power LED and test point per rail
+### B — Power input
+The battery, protection, regulation, and battery monitoring are expected to be
+designed by the BMS team in [BMS_GAR](https://github.com/Ryan-Maisuk/BMS_GAR),
+not in this repo. This split is **not yet confirmed with them**. Task B covers
+what this board needs from that one, and how it receives it.
+
+- [ ] Fill in the load table in `docs/power_budget.md` from datasheets and share it with the BMS team
+- [ ] Agree the power interface with the BMS team (see `docs/interface_notes.md`): rails, connector, current limits
+- [ ] Agree who powers the servo and where it plugs in
+- [ ] Decide how the Nucleo is powered from the supplied rail
+- [ ] Decide what local protection this board still needs (input fuse, bulk capacitance)
+- [ ] Draw `01_POWER`: input connector(s), local protection, a power LED and test point per rail
 
 ### C — RC receiver
 - [ ] Find the ER4 pad mapping, supply voltage, and logic level

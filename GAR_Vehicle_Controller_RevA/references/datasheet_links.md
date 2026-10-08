@@ -13,7 +13,7 @@ link has been collected yet.
 | RadioMaster ER4 receiver | TODO | — | [ ] |
 | RadioMaster T8L transmitter | TODO | — | [ ] |
 | ESP32 development board | TODO (form factor not chosen) | — | [ ] |
-| Battery | TODO (not selected) | — | [ ] |
+| Battery / BMS board | https://github.com/Ryan-Maisuk/BMS_GAR | Other team's repo | Owned by the BMS team |
 
 ## Background
 

@@ -32,14 +32,14 @@ Autonomous:  LiDAR + IMU + sensors --> STM32 --> control logic --> ESC + servo
 | RC transmitter | RadioMaster T8L (2.4 GHz ELRS) | Manual control | Candidate, not purchased |
 | RC receiver | RadioMaster ER4 (2.4 GHz ELRS) | SBUS/CRSF to STM32 | Candidate, not purchased |
 | Telemetry | ESP32 development board | UART-to-Wi-Fi bridge | Candidate, form factor TODO |
-| Battery | TODO | Traction + electronics supply | Not selected |
+| Battery + BMS / power distribution | Separate board, [BMS_GAR](https://github.com/Ryan-Maisuk/BMS_GAR) | Battery, protection, regulated rails, battery monitoring | Other team; interface not yet agreed |
 
 ## Hierarchical schematic sheets
 
 | Sheet | Purpose | Owner |
 |---|---|---|
 | 00_TOP | Top-level block diagram and hierarchical connections | TODO |
-| 01_POWER | Battery/BEC/regulators/protection/rail test points | TODO |
+| 01_POWER | Power input from the BMS board, local protection, rail test points | TODO |
 | 02_STM32_NUCLEO | Nucleo headers, MCU pin assignments, debug/expansion | TODO |
 | 03_RC_RECEIVER | ER4 connector, SBUS/CRSF routing, jumpers/conditioning | TODO |
 | 04_TELEMETRY | ESP32 dev-board header, UART, optional display header | TODO |
@@ -76,7 +76,7 @@ Out of scope (later revisions):
 - [ ] Receiver logic level and supply voltage
 - [ ] XR14 control signal expectations and connector pinout
 - [ ] CN0193 operating voltage and realistic stall current
-- [ ] Battery voltage / cell count and BEC/regulator architecture
+- [ ] Power interface with the BMS board: rails, connector, current limits, monitoring link
 - [ ] ESP32 form factor: specific DevKit footprint vs generic header/cable
 - [ ] Nucleo-G474RE mechanical/header footprint dimensions
 - [ ] RPLiDAR A1 power and serial connection on this revision

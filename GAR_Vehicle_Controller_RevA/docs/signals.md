@@ -41,7 +41,7 @@ hierarchical labels. Which STM32 pin each one lands on is decided later in
 | `EXP_UART_RX` | in | UART RX (spare) | TODO | 06_SENSORS_EXPANSION | Proposed |
 | `CAN_TX` | out | FDCAN (reserved) | TODO | 06_SENSORS_EXPANSION | Proposed |
 | `CAN_RX` | in | FDCAN (reserved) | TODO | 06_SENSORS_EXPANSION | Proposed |
-| `VBAT_SENSE` | in | ADC (divided battery voltage) | TODO | 01_POWER | Proposed |
+| `VBAT_SENSE` | in | ADC (divided battery voltage) — may be replaced by the BMS board's monitoring link | TODO | 01_POWER | Proposed |
 | `EXP_ADC1` | in | ADC (spare) | TODO | 06_SENSORS_EXPANSION | Proposed |
 
 Status values: Proposed (name suggested, not yet agreed) -> Agreed (safe to draw

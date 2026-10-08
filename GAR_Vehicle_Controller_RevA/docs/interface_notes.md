@@ -3,6 +3,27 @@
 One section per external interface. Record the connector, pinout, electrical
 levels, and the source that was checked. Nothing here is verified yet.
 
+## BMS / power distribution board (01_POWER)
+
+Owner: TODO (Task B)
+
+Designed by a separate team in [BMS_GAR](https://github.com/Ryan-Maisuk/BMS_GAR).
+Per that repo's README, the board is intended to distribute battery power,
+generate 5 V and 3.3 V rails, provide fuse / reverse-polarity / emergency-shutdown
+protection, and report battery voltage and current to the vehicle controller.
+Its design is at the requirements stage, so nothing below is fixed. Only the
+interface between the two boards belongs in this repo.
+
+To agree with the BMS team:
+- [ ] Rails delivered to this board, with voltage and current limit for each
+- [ ] Power connector type, pinout, and wire gauge
+- [ ] Whether the servo and LiDAR are powered from their board directly or through this one
+- [ ] Monitoring interface to the STM32: analog (ADC), I2C, or CAN — then reserve it in `pinmap.md` and `signals.md`
+- [ ] Emergency-stop behaviour: what cuts power, and whether the STM32 gets a signal
+- [ ] Ground connection between the boards
+
+They need from this repo: the load table in `power_budget.md`.
+
 ## RC receiver (03_RC_RECEIVER)
 
 Owner: TODO (Task C)
