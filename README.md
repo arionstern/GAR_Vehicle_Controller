@@ -8,7 +8,7 @@ in the core architecture.
 
 ```
 GAR_Vehicle_Controller_RevA/   KiCad Rev A carrier/interface PCB
-  docs/                        architecture, pin map, power budget, interfaces, bring-up
+  docs/                        architecture, signal list, pin map, power budget, interfaces, bring-up
   libraries/                   project-local symbols, footprints, 3D models
   manufacturing/               generated fab outputs (ignored until a fab release)
   references/                  datasheet and product links
@@ -38,10 +38,15 @@ levels are checked against the footprints (milestone M7).
 
 The task letters below are labels, not a sequence. Three orderings are firm:
 
-1. **Pin map before schematics.** No one draws on sheets `01`–`06` until the
-   pins they need are claimed in `docs/pinmap.md` (Task A).
-2. **Reviewed schematic before layout.** Task G starts after schematic review (M3).
-3. **Fabrication outputs last.** Nothing is generated for ordering, or ordered,
+1. **Signal names before schematics.** A subsystem sheet connects to the rest of
+   the board only through net names listed in `docs/signals.md`. Add or agree a
+   name there before using it. MCU pins do **not** need to be chosen yet.
+2. **Pins before the Nucleo sheet and before layout.** `02_STM32_NUCLEO` is the
+   only sheet that ties net names to physical pins. Every pin it uses must be
+   claimed in `docs/pinmap.md` first, and the pin map must be complete before
+   schematic review (M3).
+3. **Reviewed schematic before layout.** Task G starts after schematic review (M3).
+4. **Fabrication outputs last.** Nothing is generated for ordering, or ordered,
    until purchased parts are physically checked against the footprints (M7).
 
 Suggested phases:
@@ -49,15 +54,21 @@ Suggested phases:
 | Phase | What happens | Tasks involved | Can run in parallel? |
 |---|---|---|---|
 | 1 — Research | Datasheet verification for every module; record results in `docs/` and `references/datasheet_links.md` | B, C, D, E, F (research items) | Yes, all at once |
-| 2 — Pin map | Turn the research into peripheral and pin assignments; decide Rev A scope | A | No — single owner |
-| 3 — Schematics | Draw the subsystem sheets and the 00_TOP connections | B, C, D, E, F (drawing items), A (00_TOP) | Yes, one owner per sheet |
-| 4 — Schematic review | ERC, peer review, resolve pin/resource conflicts | H, everyone | — |
-| 5 — Layout | Placement review, then routing | G | No — one person in the `.kicad_pcb` at a time |
-| 6 — Verification | DRC, footprint 1:1 prints, physical fit check, then fab package | H | — |
+| 2 — Signal list | Agree net names, directions, and levels in `docs/signals.md`; decide Rev A scope | A, with every sheet owner | Overlaps with phase 1 |
+| 3 — Subsystem sheets | Draw sheets `01`, `03`–`06` up to their named hierarchical labels | B, C, D, E, F (drawing items) | Yes, one owner per sheet |
+| 4 — Pin assignment | Fill in `docs/pinmap.md`, then wire `02_STM32_NUCLEO` and the 00_TOP connections | A, F | No — single owner for the pin map |
+| 5 — Schematic review | ERC, peer review, resolve pin/resource conflicts | H, everyone | — |
+| 6 — Layout | Placement review, then routing | G | No — one person in the `.kicad_pcb` at a time |
+| 7 — Verification | DRC, footprint 1:1 prints, physical fit check, then fab package | H | — |
 
 Notes:
-- Research feeds the pin map (for example, whether SBUS arrives inverted affects
-  which UART is chosen), so phases 1 and 2 overlap in practice.
+- Until phase 4, ERC will report the hierarchical labels on 00_TOP as
+  unconnected. That is expected.
+- Where a sheet's circuit depends on the pin eventually chosen (SBUS inversion,
+  5 V signals into the MCU, analog inputs), draw it as an optional footprint or
+  jumper rather than waiting.
+- Other teams sharing the STM32 (for example BMS) reserve their pins in
+  `docs/pinmap.md`, not in a separate file.
 - Settle the battery and servo-supply decisions (Task B) early; the actuator
   sheet (Task E) depends on them.
 - The Nucleo footprint (Task F) and PCB-ordering research (Task H) have no
@@ -71,7 +82,7 @@ request for review before merging. Tick items off as they land on `main`.
 
 | Task | Owner | Branch | Deliverable |
 |---|---|---|---|
-| A — System architecture / pin map | _unassigned_ | `architecture` | `docs/architecture.md`, `docs/pinmap.md` |
+| A — System architecture / pin map | _unassigned_ | `architecture` | `docs/architecture.md`, `docs/signals.md`, `docs/pinmap.md` |
 | B — Power architecture | _unassigned_ | `power` | `01_POWER` sheet, `docs/power_budget.md` |
 | C — RC receiver (SBUS/CRSF) | _unassigned_ | `rc-interface` | `03_RC_RECEIVER` sheet, receiver section of `docs/interface_notes.md` |
 | D — Telemetry / ESP32 | _unassigned_ | `telemetry` | `04_TELEMETRY` sheet, telemetry section of `docs/interface_notes.md` |
@@ -81,12 +92,17 @@ request for review before merging. Tick items off as they land on `main`.
 | H — Verification / manufacturing | _unassigned_ | `verification` | Review checklist, `docs/bringup_plan.md`, fab package when approved |
 
 ### A — System architecture / pin map
-Blocks every schematic sheet (see Order of work).
+Early (unblocks the subsystem sheets):
 
-- [ ] Assign an STM32 peripheral to: receiver UART, ESP32 UART, servo PWM, ESC PWM, LiDAR UART, I2C, SPI, CAN
-- [ ] Fill in `docs/pinmap.md` with pin, alternate function, and Nucleo header pin for each
-- [ ] List pins already used by the Nucleo board (ST-LINK VCP, SWD, LED, button, oscillators)
+- [ ] Review and publish the net names in `docs/signals.md` with every sheet owner
 - [ ] Decide what is mandatory for Rev A vs deferred
+- [ ] Collect pin reservations from other teams (for example BMS) in `docs/pinmap.md`
+
+Later (before schematic review):
+
+- [ ] List pins already used by the Nucleo board (ST-LINK VCP, SWD, LED, button, oscillators)
+- [ ] Assign an STM32 peripheral and pin to every signal in `docs/signals.md`
+- [ ] Fill in `docs/pinmap.md` with pin, alternate function, and Nucleo header pin for each
 - [ ] Draw the 00_TOP block diagram and hierarchical connections
 
 ### B — Power architecture
@@ -142,6 +158,7 @@ Starts after schematic review (M3).
 - One branch per subsystem (`power`, `rc-interface`, `telemetry`, `actuators`, ...).
 - One owner per hierarchical sheet; avoid two people editing the same
   `.kicad_sch` / `.kicad_pcb` at once.
-- Claim MCU pins in `docs/pinmap.md` before using them in a schematic.
+- Add inter-sheet net names to `docs/signals.md` before using them; claim MCU
+  pins in `docs/pinmap.md` before wiring them on the Nucleo sheet.
 - Schematic review before layout; ERC/DRC clean (or documented exceptions) before freeze.
 - Release tags: `revA-schematic-review`, `revA-layout-review`, `revA-fab`.

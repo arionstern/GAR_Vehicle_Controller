@@ -1,7 +1,12 @@
 # Pin / Resource Map — Nucleo-G474RE
 
 Owner: TODO (Task A). This file is the single source of truth for MCU resources.
-**Claim a pin here (in a reviewed commit) before using it in a schematic or in firmware.**
+**Claim a pin here (in a reviewed commit) before wiring it on `02_STM32_NUCLEO`
+or using it in firmware.**
+
+Pins are assigned *after* the net names in `signals.md` are agreed. Subsystem
+sheets do not need a pin to be drawn; only the Nucleo sheet and layout do.
+Every team that uses this STM32 claims pins in this file, not in a separate one.
 
 No assignments have been made yet. Every row below must be checked against the
 STM32G474RE datasheet alternate-function table and the Nucleo-64 user manual
@@ -9,23 +14,32 @@ STM32G474RE datasheet alternate-function table and the Nucleo-64 user manual
 
 ## Functions needing assignment
 
-| Function | Direction | Peripheral type needed | MCU pin | Peripheral / AF | Nucleo header pin | DMA / IRQ | Status |
+| Net (`signals.md`) | Direction | Peripheral type needed | MCU pin | Peripheral / AF | Nucleo header pin | DMA / IRQ | Status |
 |---|---|---|---|---|---|---|---|
-| RC receiver RX (SBUS/CRSF in) | in | UART RX (inversion-capable if SBUS inverted) | TODO | TODO | TODO | TODO | Unassigned |
-| RC receiver TX (CRSF out) | out | UART TX (same UART as above) | TODO | TODO | TODO | TODO | Unassigned |
-| ESP32 telemetry TX | out | UART TX | TODO | TODO | TODO | TODO | Unassigned |
-| ESP32 telemetry RX | in | UART RX | TODO | TODO | TODO | TODO | Unassigned |
-| ESC command | out | Timer PWM channel | TODO | TODO | TODO | — | Unassigned |
-| Servo command | out | Timer PWM channel | TODO | TODO | TODO | — | Unassigned |
-| LiDAR UART RX/TX | in/out | UART | TODO | TODO | TODO | TODO | Unassigned |
-| LiDAR motor control | out | PWM or GPIO (TODO: verify A1 requirement) | TODO | TODO | TODO | — | Unassigned |
-| I2C expansion SCL/SDA | bidir | I2C | TODO | TODO | TODO | — | Unassigned |
-| SPI expansion SCK/MISO/MOSI/CS | — | SPI | TODO | TODO | TODO | — | Unassigned |
-| CAN TX/RX (reserved) | — | FDCAN | TODO | TODO | TODO | — | Unassigned |
-| Battery voltage sense | in | ADC | TODO | TODO | TODO | — | Unassigned |
-| Spare ADC | in | ADC | TODO | TODO | TODO | — | Unassigned |
-| Spare UART | — | UART | TODO | TODO | TODO | — | Unassigned |
+| `RC_UART_RX` | in | UART RX (inversion-capable if SBUS inverted) | TODO | TODO | TODO | TODO | Unassigned |
+| `RC_UART_TX` | out | UART TX (same UART as above) | TODO | TODO | TODO | TODO | Unassigned |
+| `TELEM_UART_TX` | out | UART TX | TODO | TODO | TODO | TODO | Unassigned |
+| `TELEM_UART_RX` | in | UART RX | TODO | TODO | TODO | TODO | Unassigned |
+| `ESC_PWM` | out | Timer PWM channel | TODO | TODO | TODO | — | Unassigned |
+| `SERVO_PWM` | out | Timer PWM channel | TODO | TODO | TODO | — | Unassigned |
+| `LIDAR_UART_RX` / `LIDAR_UART_TX` | in/out | UART | TODO | TODO | TODO | TODO | Unassigned |
+| `LIDAR_MOTOR_CTRL` | out | PWM or GPIO (TODO: verify A1 requirement) | TODO | TODO | TODO | — | Unassigned |
+| `EXP_I2C_SCL` / `EXP_I2C_SDA` | bidir | I2C | TODO | TODO | TODO | — | Unassigned |
+| `EXP_SPI_SCK` / `MISO` / `MOSI` / `CS` | — | SPI | TODO | TODO | TODO | — | Unassigned |
+| `CAN_TX` / `CAN_RX` (reserved) | — | FDCAN | TODO | TODO | TODO | — | Unassigned |
+| `VBAT_SENSE` | in | ADC | TODO | TODO | TODO | — | Unassigned |
+| `EXP_ADC1` | in | ADC | TODO | TODO | TODO | — | Unassigned |
+| `EXP_UART_TX` / `EXP_UART_RX` | — | UART | TODO | TODO | TODO | TODO | Unassigned |
 | Spare GPIO | — | GPIO | TODO | — | TODO | — | Unassigned |
+
+## Reserved for other teams
+
+Reserve the *kind* of resource early (for example "one CAN bus, two ADC
+inputs"); fill in exact pins when the pin map is assigned.
+
+| Team | Resource needed | MCU pin(s) | Contact | Status |
+|---|---|---|---|---|
+| BMS (to be confirmed) | TODO — ask what the BMS reports and over which interface | TODO | TODO | Not yet requested |
 
 ## Pins reserved by the Nucleo board itself
 
@@ -50,3 +64,4 @@ Fill these in as pins are assigned so conflicts are visible at a glance.
 | Date | Change | By |
 |---|---|---|
 | 2026-10-06 | File created, no assignments | — |
+| 2026-10-08 | Linked rows to `signals.md`; added reservations for other teams | — |
