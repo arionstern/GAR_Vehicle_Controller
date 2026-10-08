@@ -1,0 +1,22 @@
+# Normalize line endings so Windows, macOS, and Linux produce identical files
+* text=auto
+
+# KiCad writes LF on every platform; keep it that way in the working tree
+*.kicad_pro text eol=lf
+*.kicad_sch text eol=lf
+*.kicad_pcb text eol=lf
+*.kicad_sym text eol=lf
+*.kicad_mod text eol=lf
+*.kicad_dru text eol=lf
+*.kicad_wks text eol=lf
+sym-lib-table text eol=lf
+fp-lib-table text eol=lf
+
+# Binary assets
+*.step binary
+*.stp binary
+*.wrl binary
+*.pdf binary
+*.png binary
+*.jpg binary
+*.zip binary
