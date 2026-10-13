@@ -10,7 +10,11 @@ link has been collected yet.
 | Hobbywing Xerun 2848 motor + XR14 ESC | https://www.hobbywingdirect.com/products/xr14-combo | Product page | [ ] TODO: XR14 user manual |
 | SunFounder CN0193 servo | https://www.digikey.com/en/products/detail/sunfounder/CN0193/18668609 | Distributor page | [ ] TODO: datasheet |
 | RPLiDAR A1 | https://www.digikey.com/en/products/detail/seeed-technology-co-ltd/114992561/13635863 | Distributor page | [ ] TODO: Slamtec A1 datasheet + interface protocol doc |
-| RadioMaster ER4 receiver | TODO | — | [ ] |
+| RadioMaster ER4 receiver | https://cdn.shopify.com/s/files/1/0609/8324/7079/files/ER4_User_Manual.pdf?v=1722224113 | User manual (one page: pinout, dimensions, specs) | [x] No fuller datasheet is published |
+| RadioMaster ER4 receiver | https://www.radiomasterrc.com/products/er4-2-4ghz-elrs-pwm-receiver | Product page (specs) | [x] |
+| RadioMaster manuals index | https://radiomasterrc.com/pages/user-manuals | Manual downloads for all RadioMaster products | — |
+| ExpressLRS PWM receivers | https://www.expresslrs.org/hardware/pwm-receivers/ | Docs: mapping channel pins to serial output | [x] |
+| ExpressLRS serial protocols | https://expresslrs.org/software/serial-protocols/ | Docs: CRSF / SBUS output options | [x] |
 | RadioMaster T8L transmitter | TODO | — | [ ] |
 | ESP32 development board | TODO (form factor not chosen) | — | [ ] |
 | Battery / BMS board | https://github.com/Ryan-Maisuk/BMS_GAR | Other team's repo | Owned by the BMS team |

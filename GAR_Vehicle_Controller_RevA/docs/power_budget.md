@@ -10,7 +10,7 @@ Do not guess. Every value below needs a datasheet source (link in
 | Load | Supply voltage (min / nom / max) | Typical current | Peak / stall current | Logic level | Powered from | Source | Verified |
 |---|---|---|---|---|---|---|---|
 | Nucleo-G474RE | TODO | TODO | TODO | 3.3 V (TODO: confirm 5 V-tolerant pins used) | TODO | TODO | [ ] |
-| RadioMaster ER4 receiver | TODO | TODO | TODO | TODO | TODO | TODO | [ ] |
+| RadioMaster ER4 receiver | 4.5 / 5 / 8.4 V | TODO | TODO | TODO (3.3 V expected) | +5V_LOGIC (proposed) | ER4 user manual | Voltage only |
 | ESP32 dev board | TODO | TODO | TODO (Wi-Fi TX bursts) | TODO | TODO | TODO | [ ] |
 | SunFounder CN0193 servo | TODO | TODO | TODO (stall) | TODO | TODO — not the Nucleo regulator | TODO | [ ] |
 | Hobbywing XR14 (control interface) | TODO | TODO | TODO | TODO | TODO | TODO | [ ] |

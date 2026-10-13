@@ -38,18 +38,101 @@ ExpressLRS is the wireless link (T8L to ER4). SBUS or CRSF is the wired link
 | Firmware | Fixed-frame decode | Framing, packet types, CRC, telemetry |
 | Link stats / telemetry back | No | Yes |
 
-Logical connector pins: receiver power, GND, receiver TX/signal -> STM32 RX,
-STM32 TX -> receiver RX.
+### ER4 facts (from the manual and product page)
 
-Design requirements:
-- Test points on both serial lines
-- 0-ohm / solder-jumper options to isolate or reroute each line
+Sources: [ER4 user manual (PDF)](https://cdn.shopify.com/s/files/1/0609/8324/7079/files/ER4_User_Manual.pdf?v=1722224113),
+[RadioMaster ER4 product page](https://www.radiomasterrc.com/products/er4-2-4ghz-elrs-pwm-receiver).
+
+| Item | Value |
+|---|---|
+| Supply voltage | DC 4.5–8.4 V (ventilate at 7.4 V and above) |
+| Outputs | 4 PWM channels; no dedicated serial port |
+| Firmware | ExpressLRS 3.3.0 pre-installed |
+| Connector | 2 × 6 pin header, 2.54 mm pitch (15.5 mm wide) |
+| Size / weight | 30 × 15 × 5 mm, 3 g |
+| Antenna | U.FL connector, 15 cm antenna |
+| EXT-V | Solder pad for battery-voltage telemetry, 35 V max. If unused, the receiver reports its own supply voltage |
+| Telemetry power | 10 mW |
+
+Header pinout. Each channel has three pins (signal, +, −). CH2 sits directly
+under CH1, and CH4 under CH3.
+
+| Position | Top row | Bottom row |
+|---|---|---|
+| 1 | CH1 signal | CH2 signal |
+| 2 | + | + |
+| 3 | − | − |
+| 4 | − | − |
+| 5 | + | + |
+| 6 | CH3 signal | CH4 signal |
+
+### How it connects to this board
+
+The receiver is **not** mounted on the PCB. It connects by jumper wires to a
+header (J1) on this board, so the receiver's mirrored pin layout does not affect
+the footprint, and the receiver can be placed where its antenna has clearance.
+
+Only four of the receiver's twelve pins are wired:
+
+| J1 pin | Net | Receiver pin |
+|---|---|---|
+| 1 | Serial data line A | A channel signal pin set to serial (TODO: which) |
+| 2 | `+5V_LOGIC` | Any + pin |
+| 3 | `GND` | Any − pin |
+| 4 | Serial data line B | The paired channel signal pin (TODO: which) |
+
+Lines A and B become `RC_UART_RX` / `RC_UART_TX`; which is which depends on the
+receiver's pin mapping (TODO). The J1 pin order above is a proposal.
+
+Why two signal wires instead of four: by default each signal pin carries one
+PWM channel for one servo. In serial mode the receiver sends every channel as
+data on one wire, and a second wire carries data back. The STM32 reads that
+stream and drives the servo and ESC itself.
+
+### Configuring the receiver for serial output
+
+One-time setting, stored in the receiver. Steps are from the ExpressLRS
+documentation for PWM receivers in general and are **not yet verified on an
+ER4**. Sources: [ExpressLRS — PWM receivers](https://www.expresslrs.org/hardware/pwm-receivers/),
+[ExpressLRS — receiver serial protocols](https://expresslrs.org/software/serial-protocols/).
+
+1. Power the receiver (5 V) with the transmitter off. After about 60 seconds
+   with no radio link the LED blinks rapidly and the receiver starts its own
+   Wi-Fi network.
+2. Join that network from a phone or laptop (default password is in the ER4 manual).
+3. Open `http://10.0.0.1/` in a browser.
+4. On the **Model** tab, each output pin has a mode dropdown. Set one pin to
+   **Serial TX**; the matching pin switches to **Serial RX** automatically.
+   Only pins that support serial offer this option (usually CH2 and CH3).
+5. Choose the serial protocol on the same tab: CRSF or SBUS, each with an
+   inverted variant.
+6. Save and reboot. Record the pins and protocol chosen in the table above.
+
+Notes:
+- The T8L transmitter has no screen, so the transmitter-side Lua menu is not
+  available; the web page is the only way to change this.
+- SBUS output needs ExpressLRS 3.3.0 or newer (the ER4 ships with 3.3.0).
+- ExpressLRS uses channel 5 as the arm switch; plan to use it as the
+  enable/kill channel.
+- With no radio link for 60 seconds the receiver enters Wi-Fi mode and stops
+  sending control data. Firmware must treat that as link loss.
+
+### Sheet design requirements
+
+- J1: 4-pin 2.54 mm header (consider 6-pin, bringing all four channel signals
+  across, until the serial pins are confirmed)
+- Test points on both serial lines, +5 V, and GND
+- 0-ohm / solder-jumper options to isolate or reroute each serial line
 - Footprint/space for optional SBUS inversion or level conditioning
+- Bypass capacitance on the receiver supply at J1
 
-To verify:
-- [ ] ER4 pad/connector mapping and which pads carry SBUS vs CRSF
-- [ ] ER4 supply voltage range and logic level
-- [ ] SBUS polarity as output by the ER4, serial parameters
+### To verify on a real unit
+
+- [x] ER4 connector layout and supply voltage range (manual)
+- [ ] Which channel pins can be set to Serial TX / RX on the ER4
+- [ ] That all + pins are common, and all − pins are common (multimeter)
+- [ ] Serial logic level (3.3 V expected, not documented)
+- [ ] SBUS polarity as output by the ER4, and whether the inverted variant removes the need for a hardware inverter
 - [ ] CRSF baud rate and serial configuration
 - [ ] STM32G474 UART RX/TX inversion and pin-swap support on the chosen UART
 
