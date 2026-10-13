@@ -117,6 +117,30 @@ Notes:
 - With no radio link for 60 seconds the receiver enters Wi-Fi mode and stops
   sending control data. Firmware must treat that as link loss.
 
+### Schematic (first draft)
+
+`03_RC_RECEIVER.kicad_sch` is drawn as a first draft for review. The image is a
+snapshot and may lag behind the schematic file.
+
+![03_RC_RECEIVER schematic](images/03_rc_receiver.png)
+
+| Ref | Value | Fitted | Purpose |
+|---|---|---|---|
+| J1 | 4-pin 2.54 mm header | Yes | Jumper wires to the receiver |
+| R1, R2 | 0 Ω (0805) | Yes | Series links on each serial line; remove to isolate |
+| R3 | 0 Ω (0805) | Yes | Bypasses the optional inverter |
+| Q1 | 2N7002 (SOT-23) | No | Optional inverter and 5 V to 3.3 V level shifter |
+| R4 | 10 kΩ (0805) | No | Pull-up to +3V3 for Q1 |
+| C1, C2 | 100 nF, 10 µF (0805) | Yes | Receiver supply bypass at J1 |
+| TP1–TP4 | 1.5 mm pads | Yes | RC_UART_RX, RC_UART_TX, +5V_LOGIC, GND |
+
+To use the inverter, fit Q1 and R4 and remove R3. Part values and footprints
+are starting points, not verified choices.
+
+ERC currently reports four items, all expected until the other sheets exist:
+the two unconnected sheet pins on 00_TOP, `+3V3` appearing on only one pin, and
+`GND` having no power source.
+
 ### Sheet design requirements
 
 - J1: 4-pin 2.54 mm header (consider 6-pin, bringing all four channel signals

@@ -11,8 +11,8 @@
 	)
 	(lib_symbols)
 	(sheet
-		(at 190 110)
-		(size 60 35)
+		(at 193.04 111.76)
+		(size 60.96 35.56)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -27,7 +27,7 @@
 		)
 		(uuid "114ed77a-77c3-457c-87f8-7e1048c0546c")
 		(property "Sheetname" "06_SENSORS_EXPANSION"
-			(at 190 109.3 0)
+			(at 193.04 111.06 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -38,7 +38,7 @@
 			)
 		)
 		(property "Sheetfile" "06_SENSORS_EXPANSION.kicad_sch"
-			(at 190 145.6 0)
+			(at 193.04 147.92 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -57,8 +57,8 @@
 		)
 	)
 	(sheet
-		(at 30 110)
-		(size 60 35)
+		(at 30.48 111.76)
+		(size 60.96 35.56)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -73,7 +73,7 @@
 		)
 		(uuid "51302dc8-8b79-428c-83eb-3e7e724d2825")
 		(property "Sheetname" "04_TELEMETRY"
-			(at 30 109.3 0)
+			(at 30.48 111.06 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -84,7 +84,7 @@
 			)
 		)
 		(property "Sheetfile" "04_TELEMETRY.kicad_sch"
-			(at 30 145.6 0)
+			(at 30.48 147.92 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -103,8 +103,8 @@
 		)
 	)
 	(sheet
-		(at 30 40)
-		(size 60 35)
+		(at 30.48 40.64)
+		(size 60.96 35.56)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -119,7 +119,7 @@
 		)
 		(uuid "8e2197c9-8969-44e0-ba33-0b582de18bb3")
 		(property "Sheetname" "01_POWER"
-			(at 30 39.3 0)
+			(at 30.48 39.94 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -130,7 +130,7 @@
 			)
 		)
 		(property "Sheetfile" "01_POWER.kicad_sch"
-			(at 30 75.6 0)
+			(at 30.48 76.8 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -149,8 +149,8 @@
 		)
 	)
 	(sheet
-		(at 190 40)
-		(size 60 35)
+		(at 193.04 40.64)
+		(size 60.96 35.56)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -165,7 +165,7 @@
 		)
 		(uuid "ac67c354-ab94-4ccc-91df-7cd0ea060280")
 		(property "Sheetname" "03_RC_RECEIVER"
-			(at 190 39.3 0)
+			(at 193.04 39.94 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -176,7 +176,7 @@
 			)
 		)
 		(property "Sheetfile" "03_RC_RECEIVER.kicad_sch"
-			(at 190 75.6 0)
+			(at 193.04 76.8 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -184,6 +184,26 @@
 					(size 1.27 1.27)
 				)
 				(justify left top)
+			)
+		)
+		(pin "RC_UART_RX" output
+			(at 254 50.8 0)
+			(uuid "dea6a0eb-0c8d-43ab-b577-5fdeb50be6c8")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "RC_UART_TX" input
+			(at 254 55.88 0)
+			(uuid "84046390-0bc3-4e4d-8bbc-2bc429fafe9e")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 			)
 		)
 		(instances
@@ -195,8 +215,8 @@
 		)
 	)
 	(sheet
-		(at 110 40)
-		(size 60 35)
+		(at 111.76 40.64)
+		(size 60.96 35.56)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -211,7 +231,7 @@
 		)
 		(uuid "ad3b1b42-7e7e-4e49-8633-cee162c5ef6f")
 		(property "Sheetname" "02_STM32_NUCLEO"
-			(at 110 39.3 0)
+			(at 111.76 39.94 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -222,7 +242,7 @@
 			)
 		)
 		(property "Sheetfile" "02_STM32_NUCLEO.kicad_sch"
-			(at 110 75.6 0)
+			(at 111.76 76.8 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -241,8 +261,8 @@
 		)
 	)
 	(sheet
-		(at 110 110)
-		(size 60 35)
+		(at 111.76 111.76)
+		(size 60.96 35.56)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -257,7 +277,7 @@
 		)
 		(uuid "f7893303-2d1b-41eb-959e-4912e9ad1e3e")
 		(property "Sheetname" "05_ACTUATORS"
-			(at 110 109.3 0)
+			(at 111.76 111.06 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -268,7 +288,7 @@
 			)
 		)
 		(property "Sheetfile" "05_ACTUATORS.kicad_sch"
-			(at 110 145.6 0)
+			(at 111.76 147.92 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
