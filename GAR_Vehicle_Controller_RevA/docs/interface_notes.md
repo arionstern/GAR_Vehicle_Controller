@@ -129,13 +129,29 @@ snapshot and may lag behind the schematic file.
 | J1 | 4-pin 2.54 mm header | Yes | Jumper wires to the receiver |
 | R1, R2 | 0 Ω (0805) | Yes | Series links on each serial line; remove to isolate |
 | R3 | 0 Ω (0805) | Yes | Bypasses the optional inverter |
-| Q1 | 2N7002 (SOT-23) | No | Optional inverter and 5 V to 3.3 V level shifter |
+| Q1 | BSS138 (SOT-23) | No | Optional inverter and 5 V to 3.3 V level shifter |
 | R4 | 10 kΩ (0805) | No | Pull-up to +3V3 for Q1 |
 | C1, C2 | 100 nF, 10 µF (0805) | Yes | Receiver supply bypass at J1 |
 | TP1–TP4 | 1.5 mm pads | Yes | RC_UART_RX, RC_UART_TX, +5V_LOGIC, GND |
 
-To use the inverter, fit Q1 and R4 and remove R3. Part values and footprints
-are starting points, not verified choices.
+To use the inverter, fit Q1 and R4 and remove R3. Other part values and
+footprints are starting points, not verified choices.
+
+Why Q1 is a BSS138: its gate must switch fully from a 3.3 V signal. onsemi
+gives a maximum gate threshold of 1.5 V for the BSS138 (1.2 V for the BSS138K),
+against 2.5 V for the 2N7002, which would be marginal at 3.3 V.
+Sources: [BSS138K datasheet](https://www.onsemi.com/pdf/datasheet/bss138k-d.pdf),
+[2N7002E datasheet](https://www.onsemi.com/pdf/datasheet/2n7002e-d.pdf).
+
+Q1 is unlikely to be needed. The STM32G474 serial ports (USART and LPUART) have
+RXINV / TXINV bits that invert the RX / TX signal in hardware, and a SWAP bit
+that exchanges the TX and RX pins, all in the CR2 register. So SBUS polarity and
+crossed data lines can both be handled in firmware. Q1 remains only for the
+case where the receiver outputs 5 V into a pin that is not 5 V-tolerant.
+Checked against the STM32G474 register definitions in the
+[stm32g4 crate](https://docs.rs/stm32g4/0.13.0/stm32g4/stm32g474/usart1/cr2/index.html),
+not yet against RM0440 itself. Going by the STM32L4 manual, these bits can only
+be written while the port is disabled, so firmware sets them at start-up.
 
 ERC currently reports four items, all expected until the other sheets exist:
 the two unconnected sheet pins on 00_TOP, `+3V3` appearing on only one pin, and
@@ -158,7 +174,8 @@ the two unconnected sheet pins on 00_TOP, `+3V3` appearing on only one pin, and
 - [ ] Serial logic level (3.3 V expected, not documented)
 - [ ] SBUS polarity as output by the ER4, and whether the inverted variant removes the need for a hardware inverter
 - [ ] CRSF baud rate and serial configuration
-- [ ] STM32G474 UART RX/TX inversion and pin-swap support on the chosen UART
+- [x] STM32G474 UART RX/TX inversion and pin-swap support (RXINV / TXINV / SWAP; confirm in RM0440)
+- [ ] 5 V tolerance of the STM32 pins chosen for the receiver UART (datasheet pin table, "FT")
 
 Firmware interface requirements (draft): TODO
 

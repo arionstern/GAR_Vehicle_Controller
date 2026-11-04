@@ -2513,7 +2513,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "2N7002"
+		(property "Value" "BSS138"
 			(at 114.3 64.77 0)
 			(show_name no)
 			(do_not_autoplace no)
