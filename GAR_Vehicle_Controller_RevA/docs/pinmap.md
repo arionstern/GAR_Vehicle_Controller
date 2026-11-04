@@ -107,6 +107,9 @@ documented reason.
 
 ## Still to check
 
+Step-by-step checklist with clickable boxes:
+[issue #2](https://github.com/arionstern/GAR_Vehicle_Controller/issues/2).
+
 - [ ] Every AF number above against the DS12288 alternate-function table
 - [ ] Morpho header pin numbers from UM2505
 - [ ] 5 V tolerance ("FT" in the DS12288 pin table) for any pin that may see 5 V: `RC_UART_RX`, `LIDAR_UART_RX`, `TELEM_UART_RX`
